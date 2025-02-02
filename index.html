@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Zesty Juices - Sakto, Sulit, Sarap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" /><link rel="stylesheet" href="./style.css">
+<link rel="script" href="script.js">
+<link rel="icon" href="images/zestylogo.png">
+
+</head>
+<body>
+
+<header class="header">
+	<h1>Zesty Juices</h1>
+	<h2 class="tagline">Sakto, Sulit, Sarap</h2>
+</header>
+
+<nav class="sticky navbar">
+	<div class="brand  display__logo">
+		<a href="#top" class="nav__link"> <img src="images/zestylogo.png" class="image"> <span class="logo">Zesty Juices</span> </a>
+	</div>
+
+	<input type="checkbox" id="nav" class="hidden" />
+	<label for="nav" class="nav__open"><i></i><i></i><i></i></label>
+	<div class="nav">
+		<ul class="nav__items">
+			<li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+			<li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+			<li class="nav__item"><a href="#portfolio" class="nav__link">Juices</a></li>
+			<li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+		</ul>
+	</div>
+</nav>
+
+<main>
+	<section class="home">
+		<div id="home">
+			<h1>Home</h1>
+		</div>
+	</section>
+	<section class="about">
+		<div id="about">
+			<h1>About</h1>
+		</div>
+	</section>
+	<section class="portfolio">
+		<div id="portfolio">
+			<h1>What do we Sell?</h1>
+		</div>
+	</section>
+	<section class="contact">
+		<div id="contact">
+			<h1>Contact</h1>
+		</div>
+	</section>
+</main>
+
+<div class="comments">  
+	<div class="feed">
+		<h1>Feedback</h1>
+		<h3>Comment your thoughts and suggestions about our product!</h3>
+   		<p>How would you rate our Service?</p>
+ 	</div>
+<giscus
+	  class="giscus"
+      id="comments"
+      repo="devyphilip/zestyjuices"
+      repoId="R_kgDONx8GHQ"
+      category="General"
+      categoryId="DIC_kwDONx8GHc4CmjHa"
+      mapping="pathname"
+      term="Welcome to @giscus/react component!"
+      reactionsEnabled="1"
+      emitMetadata="0"
+      inputPosition="top"
+      theme="preferred_color_scheme"
+      lang="en"
+      loading="lazy"
+	  
+/>
+
+<script src="https://giscus.app/client.js"
+        data-repo="devyphilip/zestyjuices"
+        data-repo-id="R_kgDONx8GHQ"
+        data-category="General"
+        data-category-id="DIC_kwDONx8GHc4CmjHa"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+<footer class="footer">
+	<h1>Footer</h1>
+</footer>
+<!-- partial -->
+  
+</body>
+</html>
