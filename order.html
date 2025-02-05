@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order System - Zesty Juices</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div id="main-container">
+        <!-- Product Section -->
+        <section id="products">
+            <div class="product" data-id="1">
+                <img src="images/zestyorange.png" alt="Zesty Orange">
+                <h3>Zesty Orange</h3>
+                <p>Refreshing orange juice with a twist</p>
+                <div class="sizes">
+                    <p><strong>Sakto (S)</strong> - 39 Pesos</p>
+                    <p><strong>Sulit (M)</strong> - 49 Pesos</p>
+                    <p><strong>Sarap! (L)</strong> - 59 Pesos</p>
+                </div>
+                <button onclick="addToCart(1, 'Zesty Orange (S)', 39.00)">Add Sakto (S) to Cart</button>
+                <button onclick="addToCart(1, 'Zesty Orange (M)', 49.00)">Add Sulit (M) to Cart</button>
+                <button onclick="addToCart(1, 'Zesty Orange (L)', 59.00)">Add Sarap! (L) to Cart</button>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <p>Total: ₱<span id="total-price">0.00</span></p>
+            <button onclick="checkout()">Proceed to Checkout</button>
+        </section>
+
+        <!-- Checkout Form -->
+        <section id="checkout" style="display:none;">
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="address">Shipping Address</label>
+                <textarea id="address" name="address" required></textarea>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(id, name, price) {
+            cart.push({ id, name, price });
+            total += price;
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartItemsDiv = document.getElementById("cart-items");
+            cartItemsDiv.innerHTML = '';
+            cart.forEach(item => {
+                const itemElement = document.createElement("div");
+                itemElement.innerHTML = `${item.name} - ₱${item.price.toFixed(2)}`;
+                cartItemsDiv.appendChild(itemElement);
+            });
+            document.getElementById("total-price").innerText = total.toFixed(2);
+        }
+
+        function checkout() {
+            document.getElementById("cart").style.display = 'none';
+            document.getElementById("checkout").style.display = 'block';
+        }
+
+        document.getElementById("checkout-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Thank you for your order!");
+        });
+    </script>
+</body>
+</html>
