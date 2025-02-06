@@ -3,61 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order System - Zesty Juices</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Zesty Juices - Order</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFF3E0; /* Light orange background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            background: #db750e;
+            padding: 15px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            margin: 40px auto;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        h2 {
+            color: #db750e;
+        }
+        button {
+            background-color: #db750e;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #FF9800;
+        }
+        .footer {
+            background: #333;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #FF9800;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .home-button:hover {
+            background-color: #F57C00;
+        }
+    </style>
 </head>
 <body>
-    <!-- Main Container -->
-    <div id="main-container">
-        <!-- Product Section -->
-        <section id="products">
-            <div class="product" data-id="1">
-                <img src="images/zestyorange.png" alt="Zesty Orange">
+    <header class="header">
+        <div class="logo">
+          <img src="images/zestyjuices.png" alt="Zesty Juices Logo" />
+          <h1>Zesty Juices</h1>
+        </div>
+      </header>
+        <!-- Order Section -->
+        <div class="section">
+            <h2>Order Zesty Juices</h2>
+            <div class="image-container">
+                <img src="" alt="Juice Image 1">
+                <img src="" alt="Juice Image 2">
+                <img src="" alt="Juice Image 3">
+            </div>
+            <div class="product">
                 <h3>Zesty Orange</h3>
                 <p>Refreshing orange juice with a twist</p>
-                <div class="sizes">
-                    <p><strong>Sakto (S)</strong> - 39 Pesos</p>
-                    <p><strong>Sulit (M)</strong> - 49 Pesos</p>
-                    <p><strong>Sarap! (L)</strong> - 59 Pesos</p>
-                </div>
-                <button onclick="addToCart(1, 'Zesty Orange (S)', 39.00)">Add Sakto (S) to Cart</button>
-                <button onclick="addToCart(1, 'Zesty Orange (M)', 49.00)">Add Sulit (M) to Cart</button>
-                <button onclick="addToCart(1, 'Zesty Orange (L)', 59.00)">Add Sarap! (L) to Cart</button>
+                <p><strong>Sakto (S)</strong> - 24 Pesos</p>
+                <p><strong>Sulit (M)</strong> - 29 Pesos</p>
+                <p><strong>Sarap! (L)</strong> - 39 Pesos</p>
+                <button onclick="addToCart('Zesty Orange (S)', 24)">Add Sakto (S) to Cart</button>
+                <button onclick="addToCart('Zesty Orange (M)', 29)">Add Sulit (M) to Cart</button>
+                <button onclick="addToCart('Zesty Orange (L)', 39)">Add Sarap! (L) to Cart</button>
             </div>
-        </section>
-
-        <!-- Cart Section -->
-        <section id="cart">
-            <h2>Your Cart</h2>
+            <h3>Your Cart</h3>
             <div id="cart-items"></div>
             <p>Total: ₱<span id="total-price">0.00</span></p>
-            <button onclick="checkout()">Proceed to Checkout</button>
-        </section>
-
-        <!-- Checkout Form -->
-        <section id="checkout" style="display:none;">
-            <h2>Checkout</h2>
-            <form id="checkout-form">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="address">Shipping Address</label>
-                <textarea id="address" name="address" required></textarea>
-
-                <button type="submit">Place Order</button>
+            <form action="send_order.php" method="POST">
+                <input type="hidden" name="order_details" id="order_details">
+                <button type="submit" onclick="prepareOrder()">Proceed to Checkout</button>
             </form>
-        </section>
+        </div>
     </div>
-
+    <a href="index.html" class="home-button">Home</a>
+    <div class="footer">&copy; 2025 Zesty Juices. All Rights Reserved.</div>
+    
     <script>
         let cart = [];
         let total = 0;
 
-        function addToCart(id, name, price) {
-            cart.push({ id, name, price });
+        function addToCart(name, price) {
+            cart.push({ name, price });
             total += price;
             updateCartDisplay();
         }
@@ -73,15 +147,9 @@
             document.getElementById("total-price").innerText = total.toFixed(2);
         }
 
-        function checkout() {
-            document.getElementById("cart").style.display = 'none';
-            document.getElementById("checkout").style.display = 'block';
+        function prepareOrder() {
+            document.getElementById("order_details").value = JSON.stringify(cart);
         }
-
-        document.getElementById("checkout-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("Thank you for your order!");
-        });
     </script>
 </body>
 </html>
