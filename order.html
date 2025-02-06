@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zesty Juices - Order</title>
-    <link rel="icon" src="images/zestyorange.png">
+    <link rel="icon" href="images/zestyorange.png">
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #FFF3E0; /* Light orange background */
+            background-color: #FFF3E0;
             color: #333;
             margin: 0;
             padding: 0;
@@ -100,7 +100,6 @@
 <body>
     <div class="header">Zesty Juices</div>
     <div class="container">
-        <!-- Order Section -->
         <div class="section">
             <h2>Order Zesty Juices</h2>
             <div class="image-container">
@@ -121,7 +120,7 @@
             <h3>Your Cart</h3>
             <div id="cart-items"></div>
             <p>Total: ₱<span id="total-price">0.00</span></p>
-            <form action="https://formspree.io/f/mvgzqkkb" method="POST">
+            <form action="https://formspree.io/f/mvgzqkkb" method="POST" onsubmit="checkoutSuccess()">
                 <input type="hidden" name="order_details" id="order_details">
                 <label for="name">Full Name:</label>
                 <input type="text" name="name" id="name" required>
@@ -129,21 +128,24 @@
                 <textarea name="address" id="address" required></textarea>
                 <label for="email">Your Email:</label>
                 <input type="email" name="email" id="email" required>
-                <button type="submit" onclick="prepareOrder()">Proceed to Checkout</button>
+                <button type="submit">Proceed to Checkout</button>
             </form>
         </div>
     </div>
     <a href="index.html" class="home-button">Home</a>
     <div class="footer">&copy; 2025 Zesty Juices. All Rights Reserved.</div>
-    
     <script>
         let cart = [];
         let total = 0;
+        let isCheckout = false;
 
         function addToCart(name, price) {
             cart.push({ name, price });
             total += price;
             updateCartDisplay();
+            window.onbeforeunload = function() {
+                return "You have unsaved changes. Are you sure you want to leave?";
+            };
         }
 
         function updateCartDisplay() {
@@ -157,9 +159,10 @@
             document.getElementById("total-price").innerText = total.toFixed(2);
         }
 
-        function prepareOrder() {
-            let orderSummary = cart.map(item => `${item.name} - ₱${item.price.toFixed(2)}`).join("\n");
-            document.getElementById("order_details").value = orderSummary;
+        function checkoutSuccess() {
+            isCheckout = true;
+            window.onbeforeunload = null;
+            setTimeout(() => location.reload(), 500);
         }
     </script>
 </body>
