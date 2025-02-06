@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zesty Juices - Order</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -87,6 +86,13 @@
         .home-button:hover {
             background-color: #F57C00;
         }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -113,8 +119,12 @@
             <h3>Your Cart</h3>
             <div id="cart-items"></div>
             <p>Total: ₱<span id="total-price">0.00</span></p>
-            <form action="https://formspree.io/f/mvgzqkkb" method="POST">
+            <form action="https://formspree.io/f/your-form-id" method="POST">
                 <input type="hidden" name="order_details" id="order_details">
+                <label for="name">Full Name:</label>
+                <input type="text" name="name" id="name" required>
+                <label for="address">Address:</label>
+                <textarea name="address" id="address" required></textarea>
                 <label for="email">Your Email:</label>
                 <input type="email" name="email" id="email" required>
                 <button type="submit" onclick="prepareOrder()">Proceed to Checkout</button>
@@ -146,7 +156,8 @@
         }
 
         function prepareOrder() {
-            document.getElementById("order_details").value = JSON.stringify(cart);
+            let orderSummary = cart.map(item => `${item.name} - ₱${item.price.toFixed(2)}`).join("\n");
+            document.getElementById("order_details").value = orderSummary;
         }
     </script>
 </body>
