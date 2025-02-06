@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Smooth scrolling when clicking navbar links
-    document.querySelectorAll('.nav a, btn').forEach(anchor => {
+    document.querySelectorAll('.nav a, .btn').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();  // Prevent default jump
         const targetId = this.getAttribute('href').substring(1);
