@@ -15,14 +15,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Button hover effect (restore zoom effect)
-    document.querySelectorAll(".btn").forEach((btn) => {
-        btn.addEventListener("mouseenter", () => {
-            btn.style.transform = "scale(1.1)";
-            btn.style.transition = "transform 0.2s ease-in-out";
-        });
-        btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "scale(1)";
-        });
+    const buttons = document.querySelectorAll(".btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("mouseenter", () => {
+        btn.style.transform = "scale(1.1)";
+      });
+      btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "scale(1)";
+      });
+    });
+
+    const card = document.querySelectorAll(".card");
+    card.forEach((btn) => {
+      btn.addEventListener("mouseenter", () => {
+        btn.style.transform = "scale(1.03)";
+      });
+      btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "scale(1)";
+      });
     });
 });
