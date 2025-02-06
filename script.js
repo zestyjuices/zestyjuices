@@ -15,6 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+        // Add animations using CSS classes
+    const elements = document.querySelectorAll("section, .card");
+    elements.forEach((el, index) => {
+      el.style.opacity = 0;
+      el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+      el.style.transform = "translateY(20px)";
+  
+      setTimeout(() => {
+        el.style.opacity = 1;
+        el.style.transform = "translateY(0)";
+      }, index * 200);
+    });
+    
     const buttons = document.querySelectorAll(".btn");
     buttons.forEach((btn) => {
       btn.addEventListener("mouseenter", () => {
