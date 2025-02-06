@@ -14,6 +14,7 @@
             margin: 0;
             padding: 0;
             position: relative;
+            scroll-behavior: smooth;
         }
         .container {
             width: 100%;
@@ -38,6 +39,10 @@
             max-width: 600px;
             width: 100%;
             margin: 40px auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .section:hover {
+            transform: scale(1.03);
         }
         .image-container {
             display: flex;
@@ -50,6 +55,10 @@
             height: 150px;
             border-radius: 10px;
             object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        .image-container img:hover {
+            transform: scale(1.1);
         }
         h2 {
             color: #FF6F00;
@@ -62,9 +71,11 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
+            transition: transform 0.2s, background-color 0.3s;
         }
         button:hover {
             background-color: #F57C00;
+            transform: scale(1.05);
         }
         .footer {
             background: #333;
@@ -84,9 +95,11 @@
             text-decoration: none;
             font-size: 16px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, background-color 0.3s;
         }
         .home-button:hover {
             background-color: #F57C00;
+            transform: scale(1.05);
         }
         input, textarea {
             width: 100%;
@@ -98,19 +111,14 @@
     </style>
 </head>
 <body>
-<header class="header">
-    <div class="logo">
-      <img src="images/zestyjuices.png" alt="Zesty Juices Logo" />
-      <h1>Zesty Juices</h1>
-    </div>
-  </header>
+    <div class="header">Zesty Juices</div>
     <div class="container">
         <div class="section">
             <h2>Order Zesty Juices</h2>
             <div class="image-container">
-                <img src="" alt="Sakto">
-                <img src="" alt="Sulit">
-                <img src="" alt="Sarap">
+                <img src="" alt="Juice Image 1">
+                <img src="" alt="Juice Image 2">
+                <img src="" alt="Juice Image 3">
             </div>
             <div class="product">
                 <h3>Zesty Orange</h3>
