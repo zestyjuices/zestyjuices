@@ -147,36 +147,53 @@
     </div>
     <a href="index.html" class="home-button">Home</a>
     <div class="footer">&copy; 2025 Zesty Juices. All Rights Reserved.</div>
-    <script>
-        let cart = [];
-        let total = 0;
-        let isCheckout = false;
+   <script>
+    let cart = [];
+    let total = 0;
+    let isCheckout = false;
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            total += price;
-            updateCartDisplay();
-            window.onbeforeunload = function() {
-                return "You have unsaved changes. Are you sure you want to leave?";
-            };
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        total += price;
+        updateCartDisplay();
+        window.onbeforeunload = function() {
+            return "You have unsaved changes. Are you sure you want to leave?";
+        };
+    }
+
+    function updateCartDisplay() {
+        const cartItemsDiv = document.getElementById("cart-items");
+        cartItemsDiv.innerHTML = '';
+        cart.forEach(item => {
+            const itemElement = document.createElement("div");
+            itemElement.innerHTML = `${item.name} - ₱${item.price.toFixed(2)}`;
+            cartItemsDiv.appendChild(itemElement);
+        });
+        document.getElementById("total-price").innerText = total.toFixed(2);
+    }
+
+    function prepareOrderDetails() {
+        const orderDetailsField = document.getElementById("order_details");
+        if (cart.length === 0) {
+            alert("Your cart is empty. Please add items before checking out.");
+            return false;
         }
+        let orderSummary = cart.map(item => `${item.name} - ₱${item.price.toFixed(2)}`).join("\n");
+        orderSummary += `\nTotal: ₱${total.toFixed(2)}`;
+        orderDetailsField.value = orderSummary;
+        return true;
+    }
 
-        function updateCartDisplay() {
-            const cartItemsDiv = document.getElementById("cart-items");
-            cartItemsDiv.innerHTML = '';
-            cart.forEach(item => {
-                const itemElement = document.createElement("div");
-                itemElement.innerHTML = `${item.name} - ₱${item.price.toFixed(2)}`;
-                cartItemsDiv.appendChild(itemElement);
-            });
-            document.getElementById("total-price").innerText = total.toFixed(2);
-        }
-
-        function checkoutSuccess() {
+    document.querySelector("form").addEventListener("submit", function(event) {
+        if (!prepareOrderDetails()) {
+            event.preventDefault();
+        } else {
             isCheckout = true;
             window.onbeforeunload = null;
             setTimeout(() => location.reload(), 500);
         }
-    </script>
+    });
+</script>
+
 </body>
 </html>
