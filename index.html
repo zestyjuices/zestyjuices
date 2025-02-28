@@ -30,16 +30,16 @@
     <h2 class="sak">Sakto, Sulit, Sarap</h2>
     <p>Quench your thirst with our natural, refreshing, and flavorful juices.</p>
 	  <p>#PrinciplesofMarketing #Gueta</p>
-    <button class="btn" id="explore-menu-btn">Explore Our Menu</button>
+    <button class="btn" id="explore-menu-btn" href="#menu">Explore Our Menu</button>
   </section>
 </div>
 
   <!-- About Us -->
   <section id="about" class="about">
     <h2>About Us</h2>
-    <p>
-      Sarap, Sulit, Sarap we are passionate about bringing you the freshest, most delicious orange juice. <br> From the finest oranges, our juice is packed with natural flavor and essential nutrients. <br> Whether you're starting your day or looking for a refreshing boost, our orange juice is the perfect choice. <br> We believe in quality, freshness, and taste—every sip is a burst of sunshine!
-	</p>
+    <p class="text">
+      Sarap, Sulit, Sarap we are passionate about bringing you the freshest, most delicious orange juice. From the finest oranges, our juice is packed with natural flavor and essential nutrients. Whether you're starting your day or looking for a refreshing boost, our orange juice is the perfect choice. We believe in quality, freshness, and taste—every sip is a burst of sunshine!
+	 </p>
   </section>
 
   <!-- Menu -->
@@ -48,27 +48,83 @@
     <div class="card"><a href="order.html">
       <img src="images/zestyorange.png" alt="Zesty Orange Juice" />
       <h4>Zesty Orange</h4>
-      <p>Our fresh and original orange juice <br>
-		Sakto - 8 oz. <br>
-		Sulit - 12 oz. <br>
-		Sarap - 22 oz. <br>
+      <p>Our classic and fresh orange juice<br>
 	  </p>
+	</a>
+    </div>
+    <div class="card"><a href="order.html">
+      <h3 style="color:rgb(0, 0, 0);">New Arrival!</h3>
+      <img src="" alt="No Image :("/>
+      <h4>Zesty Lemon</h4>
+      <p>Our healthiest and freshest drink yet!</p>
+      <p style="color: red;">BEST SELLER!</p>
 	</a>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="contact">
-    <h3>Contact Us</h3>
+    <h2>Contact Us</h2>
     <p>Have questions? Reach out to us via email or visit our store.</p>
     <p>Email: zestyjuiceco@gmail.com</p>
   </section>
 
   <!-- Order Online -->
   <section id="order" class="order">
-    <h3>Order Online</h3>
+    <h2>Order Online</h2>
     <p>Place your orders online and enjoy the taste of freshness delivered to your doorstep.</p>
-    <button class="btn"><a href="order.html">Start Your Order</a></button>
+    <div class="order-container">
+      <div class="order-section">
+          <h2 class="order-title">Pre-Order Zesty Juices</h2>
+  
+          <div class="order-product">
+              <label for="product">Choose Your Juice:</label>
+              <select id="product" class="order-select" onchange="updateSizeOptions()">
+                  <option value="Zesty Orange">Zesty Orange</option>
+                  <option value="Zesty Lemon">Zesty Lemon</option>
+              </select>
+  
+              <label for="size">Choose Your Size:</label>
+              <select id="size" class="order-select" onchange="updateTotal()">
+                  <option value="S" data-orange="39" data-lemon="29">Sakto (12 oz.) - 29 Pesos</option>
+                  <option value="M" data-orange="49" data-lemon="36">Sulit (16 oz.) - 36 Pesos</option>
+                  <option value="L" data-orange="72" data-lemon="62" disabled>Sarap! (22 oz.) - 62 Pesos (Unavailable)</option>
+              </select>
+  
+              <label for="addon">Add-Ons:</label>
+              <select id="addon" class="order-select" onchange="updateTotal()">
+                  <option value="none" data-price="0">Nothing</option>
+                  <option value="Yakult" data-price="14">Yakult - 14 Pesos</option>
+                  <option value="Coke" data-price="20">Coke - 20 Pesos</option>
+              </select>
+  
+              <label for="preferences">Additional Preferences (Optional):</label>
+              <input type="text" name="preferences" id="preferences" class="order-input">
+  
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" class="order-input" value="1" min="1" onchange="updateTotal()">
+          </div>
+  
+          <h3 class="order-total">Total: ₱<span id="total-price">0.00</span></h3>
+  
+          <form action="https://formspree.io/f/mzzdaeba" method="POST" onsubmit="updateOrderDetails()">
+              <input type="hidden" name="order_details" id="order_details">
+  
+              <label for="name">Full Name:</label>
+              <input type="text" name="name" id="name" class="order-input" required>
+  
+              <label for="address">Address/Room#:</label>
+              <textarea name="address" id="address" class="order-textarea" required></textarea>
+  
+              <label for="email">Your Email:</label>
+              <input type="email" name="email" id="email" class="order-input" required>
+  
+              <button type="submit" class="order-button">Proceed to Checkout</button>
+          </form>
+      </div>
+  </div>
+  
+  
   </section>
 
   <!--Comments-->
