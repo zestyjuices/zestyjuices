@@ -67,6 +67,138 @@ button:hover {
     text-decoration: underline;
 }
 
+/* Navigation Bar */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #db750e;
+    color: #fff;
+    position: relative;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+/* Navigation Bar */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #db750e;
+    color: #fff;
+    position: relative;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Mobile Menu */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .bar {
+    background-color: white;
+    height: 3px;
+    width: 25px;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+  
+  /* Mobile Navigation */
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #db750e;
+      text-align: center;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    }
+  
+    .nav-links.active {
+      max-height: 300px; /* Adjust as needed */
+      padding: 1rem 0;
+    }
+  
+    .nav-links li {
+      padding: 10px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+  
+    .nav-links.active li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    .menu-toggle {
+      display: flex;
+    }
+  }
+  
+
 /* Hero Section */
 .bgimage {
     background-image: url("images/background.jpg");
@@ -176,10 +308,62 @@ button:hover {
     font-size: 1.1rem;
 }
 
+/* Order Section Styling */
+.order {
+    padding: 3rem 1.5rem;
+}
+
+/* Google Forms Container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px; /* Increased spacing */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Google Form */
+.google-form {
+    width: 100%;
+    height: 650px; /* Slightly taller */
+    border-radius: 8px;
+    border: none;
+}
+
+/* Backup Button Styling */
+.form-button-container {
+    text-align: center;
+    margin-top: 25px; /* Added spacing */
+}
+
+.form-button {
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: #db750e;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.form-button:hover {
+    background-color: #ff8c1a;
+}
+
+
 /* Order Section */
 .order {
     padding: 4rem 10%;
     text-align: center;
+    align-items: center;
 }
 
 .order-container {
@@ -231,7 +415,8 @@ button:hover {
     cursor: pointer;
     font-size: 16px;
     transition: transform 0.2s, background-color 0.3s;
-    width: 100%;
+    width: 50%;
+    border-top: 10px;
 }
 
 .order-button:hover {
