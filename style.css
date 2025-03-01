@@ -424,6 +424,77 @@ button:hover {
     transform: scale(1.05);
 }
 
+/* Feedback Section */
+.feedback {
+    text-align: center;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for Embedded Form */
+.feedback-form {
+    width: 100%;
+    max-width: 550px;
+    margin: 1.5rem auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Feedback Form Iframe */
+.feedback-box {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Backup Button Styling */
+.feedback-button {
+    margin-top: 1rem;
+}
+
+.feedback-button p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.feedback-button .btn {
+    background-color: #db750e;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.feedback-button .btn:hover {
+    background-color: #ff8800;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .feedback-form {
+        max-width: 90%;
+    }
+
+    .feedback-box {
+        height: 300px;
+    }
+
+    .feedback-button .btn {
+        width: auto;
+        padding: 10px 16px;
+    }
+}
+
+
+
 /* Footer */
 .footer {
     background-color: #333;
